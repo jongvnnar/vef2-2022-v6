@@ -8,22 +8,10 @@ import type {
 import Head from "next/head";
 import Link from "next/link";
 import { fetchFromPrismic } from "../api/prismic";
-import {
-  AccordionField,
-  AccordionPrimary,
-  PicturePrimary,
-  TextPrimary,
-} from "../types/slices";
-import { RichText } from "../types/utils";
-
-type Page = {
-  title?: RichText;
-  body?: Array<{
-    primary?: Partial<TextPrimary & PicturePrimary & AccordionPrimary>;
-    fields?: Array<Partial<AccordionField>>;
-    type: string;
-  }>;
-};
+import { AccordionSlice } from "../components/AccordionSlice";
+import { PictureSlice } from "../components/PictureSlice";
+import { TextSlice } from "../components/TextSlice";
+import { Page } from "../types/types";
 
 type PrismicResponse = {
   page?: Page;
@@ -48,7 +36,14 @@ const Page: NextPage<
       <Link href="/">
         <a>Aftur á forsíðu</a>
       </Link>
-      <SliceZone slices={page.body} />
+      <SliceZone
+        slices={page.body}
+        components={{
+          text: TextSlice,
+          picture: PictureSlice,
+          accordion: AccordionSlice,
+        }}
+      />
     </div>
   );
 };
@@ -106,7 +101,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     };
   }
   const page = result.page;
-  console.log(page);
   return {
     props: { page },
   };

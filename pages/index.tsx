@@ -8,7 +8,7 @@ import type {
 import Head from "next/head";
 import Link from "next/link";
 import { fetchFromPrismic } from "../api/prismic";
-import { RichText } from "../types/utils";
+import { RichText } from "../types/types";
 
 type Homepage = {
   title?: RichText;
