@@ -68,7 +68,7 @@ query{
       }
     }
   }
-  allPages {
+  allPages(sortBy: meta_firstPublicationDate_ASC) {
     edges {
       node {
         title
