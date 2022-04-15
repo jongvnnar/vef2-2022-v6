@@ -1,16 +1,21 @@
 import { asText } from "@prismicio/helpers";
-import type { GetServerSideProps, NextPage } from "next";
+import { PrismicRichText } from "@prismicio/react";
+import type {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { fetchFromPrismic } from "../api/prismic";
-
-type PrismicRichText = any;
+import { RichText } from "../types/utils";
 
 type Homepage = {
-  title?: PrismicRichText;
-  content?: PrismicRichText;
+  title?: RichText;
+  content?: RichText;
   pages?: Array<{
     page?: {
-      title?: PrismicRichText;
+      title?: RichText;
       _meta: {
         uid: string;
       };
@@ -29,7 +34,9 @@ type PrismicResponse = {
 type Props = {
   page: Homepage;
 };
-const Home: NextPage<Props> = ({ page }) => {
+const Home: NextPage<
+  InferGetServerSidePropsType<GetServerSideProps<Props>>
+> = ({ page }) => {
   const title = asText(page.title);
   return (
     <div>
@@ -39,6 +46,22 @@ const Home: NextPage<Props> = ({ page }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>{title || "Heimasíða!"}</h1>
+      <PrismicRichText field={page.content} />
+      <section>
+        <h2>Síður</h2>
+        <ul>
+          {page.pages?.map((value) => {
+            const { page } = value;
+            return (
+              <li>
+                <Link href={`${page?._meta.uid || ""}`}>
+                  <a>{asText(page?.title) || "Hlekkur á síðu"}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </div>
   );
 };
