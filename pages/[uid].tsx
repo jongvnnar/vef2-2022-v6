@@ -27,26 +27,28 @@ const Page: NextPage<
 > = ({ page }) => {
   const title = asText(page.title);
   return (
-    <div>
+    <>
       <Head>
         <title>{title || "Síða"}</title>
         <meta name="description" content="Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>{title}</h1>
-      <Link href="/">
-        <a>Aftur á forsíðu</a>
-      </Link>
-      <SliceZone
-        slices={page.body}
-        components={{
-          text: TextSlice,
-          picture: PictureSlice,
-          accordion: AccordionSlice,
-          select: SelectSlice,
-        }}
-      />
-    </div>
+      <main>
+        <h1>{title}</h1>
+        <Link href="/">
+          <a>Aftur á forsíðu</a>
+        </Link>
+        <SliceZone
+          slices={page.body}
+          components={{
+            text: TextSlice,
+            picture: PictureSlice,
+            accordion: AccordionSlice,
+            select: SelectSlice,
+          }}
+        />
+      </main>
+    </>
   );
 };
 

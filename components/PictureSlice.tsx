@@ -5,12 +5,17 @@ type Props = {
   slice: IPictureSlice;
 };
 export function PictureSlice({ slice }: Props) {
-  const { url, dimensions } = slice.primary.img;
+  const { url, dimensions, alt } = slice.primary.img;
   const { caption } = slice.primary;
   return (
     <section>
       {url && dimensions ? (
-        <Image src={url} width={dimensions.width} height={dimensions.height} />
+        <Image
+          src={url}
+          width={dimensions.width}
+          height={dimensions.height}
+          alt={alt ?? ""}
+        />
       ) : (
         <p>Mynd fannst ekki</p>
       )}

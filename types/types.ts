@@ -52,12 +52,4 @@ export type Page = {
 export type Homepage = {
   title?: RichText;
   content?: RichText;
-  pages?: Array<{
-    page?: {
-      title?: RichText;
-      _meta: {
-        uid: string;
-      };
-    };
-  }>;
 };
