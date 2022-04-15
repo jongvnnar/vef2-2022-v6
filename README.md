@@ -1,3 +1,29 @@
+# Verkefni 6
+Verkefnið keyrir á https://vef2-2022-v6-jongvnnar.vercel.app/
+
+# Dev keyrsla
+Fyrst þarf að setja upp .env skrá í rót:
+
+## .env skrá sem virkar:
+```
+PRISMIC_BASE_URL=https://vef2-2022-v6-jongvnnar.prismic.io/graphql
+PRISMIC_REPO=vef2-2022-v6-jongvnnar
+PRISMIC_API_TOKEN=MC5ZbGliVXhjQUFDa0EtN3E2.77-9Yirvv73vv73vv73vv73vv71U77-9PXLvv73vv73vv73vv73vv70277-977-9PkXvv73vv71777-977-977-9fO-_vV1y
+```
+
+Til að keyra:
+```
+yarn install
+yarn dev
+```
+
+# Prismic
+Verkefnið er tengt við Prismic repo.
+
+Hægt er að skoða graphql api fyrir repoið: https://vef2-2022-v6-jongvnnar.prismic.io/graphql
+
+-------------
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
