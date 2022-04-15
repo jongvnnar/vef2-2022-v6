@@ -1,6 +1,5 @@
 import { IPictureSlice } from "../types/types";
 import Image from "next/image";
-import { PrismicRichText } from "@prismicio/react";
 
 type Props = {
   slice: IPictureSlice;

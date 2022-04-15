@@ -10,6 +10,7 @@ import Link from "next/link";
 import { fetchFromPrismic } from "../api/prismic";
 import { AccordionSlice } from "../components/AccordionSlice";
 import { PictureSlice } from "../components/PictureSlice";
+import { SelectSlice } from "../components/SelectSlice";
 import { TextSlice } from "../components/TextSlice";
 import { Page } from "../types/types";
 
@@ -42,6 +43,7 @@ const Page: NextPage<
           text: TextSlice,
           picture: PictureSlice,
           accordion: AccordionSlice,
+          select: SelectSlice,
         }}
       />
     </div>
@@ -78,6 +80,13 @@ query($uid:String!){
             item_content
           }
         }
+        ... on PageBodySelect{
+            type
+            primary{
+              selection_title
+              selection
+            }
+          }
       }
     }
   }

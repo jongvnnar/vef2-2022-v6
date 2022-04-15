@@ -39,7 +39,12 @@ export type IAccordionSlice = Slice<
   }
 >;
 
+export type ISelectSlice = Slice<
+  "select",
+  { selection_title: RichText; selection: string }
+>;
+
 export type Page = {
   title: RichText;
-  body: SliceZone<ITextSlice | IPictureSlice | IAccordionSlice>;
+  body: SliceZone<ITextSlice | IPictureSlice | IAccordionSlice | ISelectSlice>;
 };
