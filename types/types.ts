@@ -48,3 +48,16 @@ export type Page = {
   title: RichText;
   body: SliceZone<ITextSlice | IPictureSlice | IAccordionSlice | ISelectSlice>;
 };
+
+export type Homepage = {
+  title?: RichText;
+  content?: RichText;
+  pages?: Array<{
+    page?: {
+      title?: RichText;
+      _meta: {
+        uid: string;
+      };
+    };
+  }>;
+};

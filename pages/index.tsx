@@ -8,28 +8,7 @@ import type {
 import Head from "next/head";
 import Link from "next/link";
 import { fetchFromPrismic } from "../api/prismic";
-import { RichText } from "../types/types";
-
-type Homepage = {
-  title?: RichText;
-  content?: RichText;
-  pages?: Array<{
-    page?: {
-      title?: RichText;
-      _meta: {
-        uid: string;
-      };
-    };
-  }>;
-};
-
-type PrismicResponse = {
-  allHomepages?: {
-    edges?: Array<{
-      node?: Homepage;
-    }>;
-  };
-};
+import { Homepage } from "../types/types";
 
 type Props = {
   page: Homepage;
@@ -90,6 +69,14 @@ query{
   }
 }
 `;
+
+type PrismicResponse = {
+  allHomepages?: {
+    edges?: Array<{
+      node?: Homepage;
+    }>;
+  };
+};
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const result = await fetchFromPrismic<PrismicResponse>(query);
