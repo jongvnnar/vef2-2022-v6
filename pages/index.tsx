@@ -39,10 +39,10 @@ const Home: NextPage<
         <section>
           <h2>Síður</h2>
           <ul>
-            {links.map((value) => {
+            {links.map((value, index) => {
               const { node } = value;
               return (
-                <li>
+                <li key={index}>
                   <Link href={`${node?._meta.uid || ""}`}>
                     <a>{asText(node?.title) || "Hlekkur á síðu"}</a>
                   </Link>

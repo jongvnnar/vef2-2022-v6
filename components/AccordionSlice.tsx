@@ -14,11 +14,10 @@ export function AccordionSlice({ slice }: Props) {
       <ul>
         {slice.fields.map((value, i) => {
           return (
-            <li>
+            <li key={i}>
               <AccordionItem
                 title={asText(value.item_title)}
                 content={value.item_content}
-                key={i}
               />
             </li>
           );
